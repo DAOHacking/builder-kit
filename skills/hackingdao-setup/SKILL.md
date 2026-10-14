@@ -23,6 +23,11 @@ These hold in every step. If a request would break one, refuse and say which rul
 - Never commit `.env`. Never push to `main`.
 - Never force-push, except `git push --force-with-lease` to the builder's own issue branch after a sync.
 
+## Build rules and briefs
+
+- Follow [rules.md](rules.md) in every repo: code, writing, design and motion.
+- To hand a task to a coding agent, start from [brief-template.md](brief-template.md).
+
 ## Pause points
 
 Some steps need the human: browser sign-in, two-factor authentication, accepting an invite. At each one:
