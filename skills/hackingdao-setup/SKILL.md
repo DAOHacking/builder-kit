@@ -28,6 +28,11 @@ These hold in every step. If a request would break one, refuse and say which rul
 - Follow [rules.md](rules.md) in every repo: code, writing, design and motion.
 - To hand a task to a coding agent, start from [brief-template.md](brief-template.md).
 
+## Writing and posts
+
+- Use [no-slop](../no-slop/SKILL.md) on everything the builder writes: READMEs, pull requests, issue comments and hackathon submissions.
+- After a build session, use [sessionclips](../sessionclips/SKILL.md) to draft posts for X from what was built.
+
 ## Pause points
 
 Some steps need the human: browser sign-in, two-factor authentication, accepting an invite. At each one:

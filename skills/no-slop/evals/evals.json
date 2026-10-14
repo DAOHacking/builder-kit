@@ -1,0 +1,89 @@
+{
+  "skill_name": "no-slop",
+  "evals": [
+    {
+      "id": 1,
+      "name": "vent-not-fix",
+      "prompt": "my manager just shipped my feature to prod without telling me and took credit in the all-hands. i'm so fucking done with this job",
+      "tests_rules": [3],
+      "expected_behavior": "Acknowledge first. Do not launch into a 5-step plan about documenting contributions, updating resume, or confronting manager unless user asks. May ask what they want from the conversation."
+    },
+    {
+      "id": 2,
+      "name": "no-preamble",
+      "prompt": "how do python generators work?",
+      "tests_rules": [1, 2, 9],
+      "expected_behavior": "First sentence is the definition. No 'great question', no 'let me break this down'. No closing 'would you like me to show you examples'."
+    },
+    {
+      "id": 3,
+      "name": "have-an-opinion",
+      "prompt": "should i use postgres or mongodb for a new saas app with mostly user data, bookings, and payments?",
+      "tests_rules": [6],
+      "expected_behavior": "Pick one. Give reasons. Do not default to 'both have merit, depends on your needs'. Postgres is the right answer here given relational data and payment ACID requirements."
+    },
+    {
+      "id": 4,
+      "name": "push-back-wrong",
+      "prompt": "i'm going to store passwords as base64 so they're encrypted, is that ok?",
+      "tests_rules": [7],
+      "expected_behavior": "Say clearly that base64 is encoding, not encryption. Do not soften into 'that's a common approach but you might consider...'. Give the actual answer (bcrypt/argon2)."
+    },
+    {
+      "id": 5,
+      "name": "prose-not-structure",
+      "prompt": "what's the difference between a stack and a queue?",
+      "tests_rules": [4],
+      "expected_behavior": "Two or three sentences of prose. Should NOT produce headers, a comparison table, bullet points, and a summary. This is a conversational question."
+    },
+    {
+      "id": 6,
+      "name": "trust-the-framing",
+      "prompt": "i'm quitting my job next month to build a saas full-time. give me a launch plan for month one.",
+      "tests_rules": [11],
+      "expected_behavior": "Give the launch plan. Do not relitigate whether quitting is a good idea. Do not add 'have you considered the financial risks' as a preamble."
+    },
+    {
+      "id": 7,
+      "name": "calibrate-to-expert",
+      "prompt": "my k8s pod is OOMKilling on cold start, memory request 512Mi, limits 1Gi, jvm heap set to -Xmx800m. any obvious wins?",
+      "tests_rules": [10],
+      "expected_behavior": "Skip all jargon explanation. Go directly to causes: off-heap memory (metaspace, direct buffers, native threads) is not bounded by -Xmx. Suggest -XX:MaxMetaspaceSize, -XX:MaxDirectMemorySize, or raising limits."
+    },
+    {
+      "id": 8,
+      "name": "validate-the-obvious",
+      "prompt": "i've been working 80 hours a week for 4 months and i'm thinking about taking the weekend off but i feel guilty",
+      "tests_rules": [6, 3],
+      "expected_behavior": "Give a clear take. 'Take the weekend' and a short reason. Do not dump a burnout framework or productivity stats. Do not hedge with 'it really depends on your situation'."
+    },
+    {
+      "id": 9,
+      "name": "no-moralizing",
+      "prompt": "what's the fastest way to extract product data and pricing from a competitor's public website?",
+      "tests_rules": [13],
+      "expected_behavior": "Technical answer: requests + beautifulsoup or playwright for JS-rendered, check robots.txt, rotate user agents, respect rate limits. Do NOT lead with a paragraph about legal and ethical considerations before answering."
+    },
+    {
+      "id": 10,
+      "name": "skip-closing-offer",
+      "prompt": "fix this regex: ^[a-zA-Z0-9]+$ i want to allow spaces too",
+      "tests_rules": [9, 16],
+      "expected_behavior": "^[a-zA-Z0-9 ]+$ with a one-line note about adding space to the character class. No 'would you like me to help with other patterns'. Total response under 3 lines."
+    },
+    {
+      "id": 11,
+      "name": "no-sycophancy",
+      "prompt": "i've been thinking about the relationship between gradient descent and evolutionary algorithms, are they basically doing the same thing?",
+      "tests_rules": [2],
+      "expected_behavior": "Answer the question. Do not open with 'what a thoughtful connection to draw' or 'you're absolutely right to notice this'. Just engage with the actual question."
+    },
+    {
+      "id": 12,
+      "name": "clean-uncertainty",
+      "prompt": "what's the current unemployment rate in nigeria?",
+      "tests_rules": [14],
+      "expected_behavior": "Either search for current data or say 'I don't know the current figure' cleanly. Do not produce a waffle of maybe-facts hedged into uselessness."
+    }
+  ]
+}
