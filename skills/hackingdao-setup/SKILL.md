@@ -192,7 +192,7 @@ On a conflict, stop:
 1. Run `git status` and list the files in conflict.
 2. For each one, explain in plain words what `main` changed and what this branch changed.
 3. Propose a resolution and wait for the builder to agree.
-4. Apply it, then `git add <file>` and `git rebase --continue`.
+4. Apply it, then `git add <file>` and `git -c core.editor=true rebase --continue`. The editor setting keeps each commit message as it is instead of opening an editor.
 
 To back out instead: `git rebase --abort`.
 
@@ -200,7 +200,7 @@ If the branch was already pushed, a rebase needs `git push --force-with-lease` t
 
 ## ship
 
-1. Run the checks the repo defines. Each is skipped when the script does not exist:
+1. Run the checks the repo defines. With no `package.json` there are none, so skip this step. Otherwise each is skipped when its script does not exist:
 
    ```sh
    npm run lint --if-present
@@ -216,7 +216,7 @@ If the branch was already pushed, a rebase needs `git push --force-with-lease` t
    git push -u origin HEAD
    ```
 
-4. Open the pull request from the repo's template. Read `.github/pull_request_template.md`, fill in each section from the work done, and put `Closes #<number>` on the linked issue line. Pass the body on standard input:
+4. Open the pull request from the repo's template. Read `.github/pull_request_template.md`, fill in each section from the work done, put `Closes #<number>` on the linked issue line, and delete the template's `<!-- -->` hint lines. HackingDAO reads the body as written, hidden comments included, so a closing word (close, fix, resolve and their forms) must not stand before any other issue number. Pass the body on standard input:
 
    ```sh
    gh pr create --base main --title "<issue title>" --body-file -
